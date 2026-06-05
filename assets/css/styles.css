@@ -1,16 +1,13 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@500;600;700&display=swap");
 
-/*=============== VARIABLES CSS ===============*/
+/**
+ * Core Application Variable Mapping
+ * Document Layout Definitions & Theme Settings
+ */
 :root {
   --header-height: 3rem;
-
-  /*========== Colors ==========*/
-  /* Change favorite color to match images */
-  /*Green dark 190 - Green 171 - Grren Blue 200*/
   --hue-color: 190;
-
-  /* HSL color mode */
   --first-color: hsl(var(--hue-color), 64%, 22%);
   --first-color-second: hsl(var(--hue-color), 64%, 22%);
   --first-color-alt: hsl(var(--hue-color), 64%, 15%);
@@ -19,41 +16,31 @@
   --text-color-light: hsl(var(--hue-color), 8%, 60%);
   --input-color: hsl(var(--hue-color), 24%, 97%);
   --body-color: hsl(var(--hue-color), 100%, 99%);
-  --white-color: #FFF;
+  --white-color: #fff;
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 75%);
-
-  /*========== Font and typography ==========*/
-  --body-font: 'Open Sans', sans-serif;
-  --title-font: 'Raleway', sans-serif;
+  --body-font: "Open Sans", sans-serif;
+  --title-font: "Raleway", sans-serif;
   --biggest-font-size: 2.5rem;
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
   --h3-font-size: 1rem;
-  --normal-font-size: .938rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
-
-  /*========== Font weight ==========*/
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
   --font-medium: 500;
   --font-semi-bold: 600;
-
-  /*========== Margenes Bottom ==========*/
-  --mb-0-25: .25rem;
-  --mb-0-5: .5rem;
-  --mb-0-75: .75rem;
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
   --mb-1: 1rem;
   --mb-1-25: 1.25rem;
   --mb-1-5: 1.5rem;
   --mb-2: 2rem;
   --mb-2-5: 2.5rem;
-
-  /*========== z index ==========*/
   --z-tooltip: 10;
   --z-fixed: 100;
-
-  /*========== Hover overlay ==========*/
-  --img-transition: .3s;
+  --img-transition: 0.3s;
   --img-hidden: hidden;
   --img-scale: scale(1.1);
 }
@@ -65,12 +52,11 @@
     --h2-font-size: 1.75rem;
     --h3-font-size: 1.25rem;
     --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
   }
 }
 
-/*========== Variables Dark theme ==========*/
 body.dark-theme {
   --first-color-second: hsl(var(--hue-color), 54%, 12%);
   --title-color: hsl(var(--hue-color), 24%, 95%);
@@ -81,7 +67,6 @@ body.dark-theme {
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
 }
 
-/*========== Button Dark/Light ==========*/
 .nav__dark {
   display: flex;
   align-items: center;
@@ -91,7 +76,8 @@ body.dark-theme {
   bottom: 4rem;
 }
 
-.change-theme, .change-theme-name {
+.change-theme,
+.change-theme-name {
   color: var(--text-color);
 }
 
@@ -104,7 +90,6 @@ body.dark-theme {
   font-size: var(--small-font-size);
 }
 
-/*=============== BASE ===============*/
 * {
   box-sizing: border-box;
   padding: 0;
@@ -123,7 +108,9 @@ body {
   color: var(--text-color);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: var(--title-color);
   font-weight: var(--font-semi-bold);
   font-family: var(--title-font);
@@ -162,7 +149,6 @@ input {
   overflow-x: hidden;
 }
 
-/*=============== REUSABLE CSS CLASSES ===============*/
 .section {
   padding: 4.5rem 0 2.5rem;
 }
@@ -186,7 +172,6 @@ input {
   gap: 1.5rem;
 }
 
-/*=============== HEADER ===============*/
 .header {
   width: 100%;
   position: fixed;
@@ -196,7 +181,6 @@ input {
   background-color: transparent;
 }
 
-/*=============== NAV ===============*/
 .nav {
   height: var(--header-height);
   display: flex;
@@ -204,7 +188,8 @@ input {
   align-items: center;
 }
 
-.nav__logo, .nav__toggle {
+.nav__logo,
+.nav__toggle {
   color: var(--white-color);
 }
 
@@ -231,7 +216,7 @@ input {
     height: 100%;
     box-shadow: -1px 0 4px rgba(14, 55, 63, 0.15);
     padding: 3rem;
-    transition: .4s;
+    transition: 0.4s;
   }
 }
 
@@ -253,19 +238,17 @@ input {
 
 .nav__close {
   position: absolute;
-  top: .75rem;
+  top: 0.75rem;
   right: 1rem;
   font-size: 1.5rem;
   color: var(--title-color);
   cursor: pointer;
 }
 
-/* show menu */
 .show-menu {
   right: 0;
 }
 
-/* Change background header */
 .scroll-header {
   background-color: var(--body-color);
   box-shadow: 0 0 4px rgba(14, 55, 63, 0.15);
@@ -276,23 +259,21 @@ input {
   color: var(--title-color);
 }
 
-/* Active link */
 .active-link {
   position: relative;
   color: var(--title-color);
 }
 
 .active-link::before {
-  content: '';
+  content: "";
   position: absolute;
   background-color: var(--title-color);
   width: 100%;
   height: 2px;
-  bottom: -.75rem;
+  bottom: -0.75rem;
   left: 0;
 }
 
-/*=============== HOME ===============*/
 .home__img {
   position: absolute;
   top: 0;
@@ -310,9 +291,9 @@ input {
   row-gap: 3rem;
 }
 
-.home__data-subtitle, 
-.home__data-title, 
-.home__social-link, 
+.home__data-subtitle,
+.home__data-title,
+.home__social-link,
 .home__info {
   color: var(--white-color);
 }
@@ -345,7 +326,7 @@ input {
   display: flex;
   padding: 1.5rem 1rem;
   align-items: center;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
   position: absolute;
   right: 0;
   bottom: 1rem;
@@ -376,14 +357,13 @@ input {
   transform: var(--img-scale);
 }
 
-/*=============== BUTTONS ===============*/
 .button {
   display: inline-block;
   background-color: var(--first-color);
   color: var(--white-color);
   padding: 1rem 2rem;
   font-weight: var(--font-semi-bold);
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .button:hover {
@@ -393,7 +373,7 @@ input {
 .button--flex {
   display: flex;
   align-items: center;
-  column-gap: .25rem;
+  column-gap: 0.25rem;
 }
 
 .button--link {
@@ -405,7 +385,6 @@ input {
   background: none;
 }
 
-/*=============== ABOUT ===============*/
 .about__data {
   text-align: center;
 }
@@ -437,17 +416,16 @@ input {
   width: 180px;
 }
 
-.about__img-one, 
+.about__img-one,
 .about__img-two {
   transition: var(--img-transition);
 }
 
-.about__img-one:hover, 
+.about__img-one:hover,
 .about__img-two:hover {
   transform: var(--img-scale);
 }
 
-/*=============== DISCOVER ===============*/
 .discover__card {
   position: relative;
   width: 200px;
@@ -460,7 +438,7 @@ input {
   left: 1rem;
 }
 
-.discover__title, 
+.discover__title,
 .discover__description {
   color: var(--white-color);
 }
@@ -488,7 +466,6 @@ input {
   background-image: none;
 }
 
-/*=============== EXPERIENCE ===============*/
 .experience__container {
   row-gap: 2.5rem;
   justify-content: center;
@@ -517,12 +494,12 @@ input {
   padding-bottom: 2rem;
 }
 
-.experience__img-one, 
+.experience__img-one,
 .experience__img-two {
   transition: var(--img-transition);
 }
 
-.experience__img-one:hover, 
+.experience__img-one:hover,
 .experience__img-two:hover {
   transform: var(--img-scale);
 }
@@ -543,7 +520,6 @@ input {
   right: 0;
 }
 
-/*=============== VIDEO ===============*/
 .video__container {
   padding-bottom: 1rem;
 }
@@ -568,8 +544,8 @@ input {
   font-size: 1.2rem;
 }
 
-/*=============== PLACES ===============*/
-.place__card, .place__img {
+.place__card,
+.place__img {
   height: 230px;
 }
 
@@ -591,7 +567,8 @@ input {
   transition: var(--img-transition);
 }
 
-.place__content, .place__title {
+.place__content,
+.place__title {
   color: var(--white-color);
 }
 
@@ -604,7 +581,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: .75rem .75rem 1rem;
+  padding: 0.75rem 0.75rem 1rem;
 }
 
 .place__rating {
@@ -614,7 +591,7 @@ input {
 }
 
 .place__rating-icon {
-  font-size: .75rem;
+  font-size: 0.75rem;
   margin-right: var(--mb-0-25);
 }
 
@@ -622,7 +599,8 @@ input {
   font-size: var(--small-font-size);
 }
 
-.place__subtitle, .place__price {
+.place__subtitle,
+.place__price {
   display: block;
 }
 
@@ -640,16 +618,25 @@ input {
   position: absolute;
   right: 0;
   bottom: 0;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
 }
 
-/*=============== SUBSCRIBE ===============*/
+.footer__data .plan-pricing {
+  color: var(--text-color);
+  font-size: var(--small-font-size);
+  margin-bottom: var(--mb-0-75);
+}
+
+.footer__data .plan-pricing:hover {
+  color: var(--title-color);
+}
+
 .subscribe__bg {
   background-color: var(--first-color-second);
   padding: 2.5rem 0;
 }
 
-.subscribe__title, 
+.subscribe__title,
 .subscribe__description {
   color: var(--white-color);
 }
@@ -661,14 +648,14 @@ input {
 
 .subscribe__form {
   background-color: var(--input-color);
-  padding: .5rem;
+  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
 }
 
 .subscribe__input {
   width: 70%;
-  padding-right: .5rem;
+  padding-right: 0.5rem;
   background-color: var(--input-color);
   color: var(--text-color);
 }
@@ -677,7 +664,6 @@ input {
   color: var(--text-color);
 }
 
-/*=============== SPONSORS ===============*/
 .sponsor__container {
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   justify-items: center;
@@ -694,7 +680,6 @@ input {
   transition: var(--img-transition);
 }
 
-/*=============== FOOTER ===============*/
 .footer__container {
   row-gap: 5rem;
 }
@@ -704,7 +689,7 @@ input {
   row-gap: 2rem;
 }
 
-.footer__title, 
+.footer__title,
 .footer__subtitle {
   font-size: var(--h3-font-size);
 }
@@ -746,7 +731,8 @@ input {
   text-align: center;
 }
 
-.footer__copy, .footer__terms-link {
+.footer__copy,
+.footer__terms-link {
   font-size: var(--small-font-size);
   color: var(--text-color-light);
 }
@@ -761,17 +747,16 @@ input {
   color: var(--text-color);
 }
 
-/*========== SCROLL UP ==========*/
 .scrollup {
   position: fixed;
   right: 1rem;
   bottom: -20%;
   background-color: var(--first-color);
-  padding: .5rem;
+  padding: 0.5rem;
   display: flex;
-  opacity: .9;
+  opacity: 0.9;
   z-index: var(--z-tooltip);
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .scrollup:hover {
@@ -784,14 +769,12 @@ input {
   font-size: 1.2rem;
 }
 
-/* Show scroll */
 .show-scroll {
   bottom: 5rem;
 }
 
-/*=============== SCROLL BAR ===============*/
 ::-webkit-scrollbar {
-  width: .60rem;
+  width: 0.6rem;
   background-color: var(--scroll-bar-color);
 }
 
@@ -803,8 +786,6 @@ input {
   background-color: var(--text-color-light);
 }
 
-/*=============== MEDIA QUERIES ===============*/
-/* For small devices */
 @media screen and (max-width: 340px) {
   .place__container {
     grid-template-columns: max-content;
@@ -829,11 +810,10 @@ input {
   }
 }
 
-/* For medium devices */
 @media screen and (min-width: 568px) {
   .video__container {
     display: grid;
-    grid-template-columns: .6fr;
+    grid-template-columns: 0.6fr;
     justify-content: center;
   }
   .place__container {
@@ -870,7 +850,8 @@ input {
     flex-direction: row;
     column-gap: 4rem;
   }
-  .nav__toggle, .nav__close {
+  .nav__toggle,
+  .nav__close {
     display: none;
   }
   .change-theme-name {
@@ -899,7 +880,7 @@ input {
   }
   .home__container {
     height: 100vh;
-    grid-template-rows: 1.8fr .5fr;
+    grid-template-rows: 1.8fr 0.5fr;
   }
   .home__data {
     align-self: flex-end;
@@ -917,7 +898,8 @@ input {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
   }
-  .about__data, .about__title {
+  .about__data,
+  .about__title {
     text-align: initial;
   }
   .about__title {
@@ -951,7 +933,7 @@ input {
     padding: 3.5rem 0;
   }
   .subscribe__input {
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
   }
   .footer__rights {
     flex-direction: row;
@@ -959,14 +941,13 @@ input {
   }
 }
 
-/* For large devices */
 @media screen and (min-width: 1024px) {
   .container {
     margin-left: auto;
     margin-right: auto;
   }
   .home__container {
-    grid-template-rows: 2fr .5fr;
+    grid-template-rows: 2fr 0.5fr;
   }
   .home__info {
     width: 328px;
@@ -1011,7 +992,7 @@ input {
     top: 3rem;
   }
   .video__container {
-    grid-template-columns: .7fr;
+    grid-template-columns: 0.7fr;
   }
   .video__description {
     padding: 0 8rem;
@@ -1019,7 +1000,8 @@ input {
   .place__container {
     gap: 3rem 2rem;
   }
-  .place__card, .place__img {
+  .place__card,
+  .place__img {
     height: 263px;
   }
   .footer__content {
@@ -1033,12 +1015,12 @@ input {
   }
 }
 
-/* For tall screens on mobiles y desktop*/
 @media screen and (min-height: 721px) {
   body {
     margin: 0;
   }
-  .home__container, .home__img {
+  .home__container,
+  .home__img {
     height: 640px;
   }
 }

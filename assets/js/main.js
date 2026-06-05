@@ -1,45 +1,59 @@
-/*==================== SHOW MENU ====================*/
-const navMenu = document.getElementById('nav-menu'),
-      navToggle = document.getElementById('nav-toggle'),
-      navClose = document.getElementById('nav-close')
+/**
+ * TerraQuest Core Interface Controller
+ * Automated Layout Visualizations, Component Bindings, and Navigation Matrix
+ */
 
-/*===== MENU SHOW =====*/
-/* Validate if constant exists */
-if(navToggle){
-    navToggle.addEventListener('click', () =>{
-        navMenu.classList.add('show-menu')
-    })
-}
+(function () {
+  "use strict";
 
-/*===== MENU HIDDEN =====*/
-/* Validate if constant exists */
-if(navClose){
-    navClose.addEventListener('click', () =>{
-        navMenu.classList.remove('show-menu')
-    })
-}
+  // --- Core Document Elements Selector Node Setup ---
+  const appSideMenu = document.getElementById("nav-menu");
+  const appMenuOpenBtn = document.getElementById("nav-toggle");
+  const appMenuCloseBtn = document.getElementById("nav-close");
 
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link')
+  // --- Dynamic Sidebar Toggle Logic ---
+  if (appMenuOpenBtn && appSideMenu) {
+    appMenuOpenBtn.addEventListener("click", () => {
+      appSideMenu.classList.add("show-menu");
+    });
+  }
 
-function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show-menu')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
+  if (appMenuCloseBtn && appSideMenu) {
+    appMenuCloseBtn.addEventListener("click", () => {
+      appSideMenu.classList.remove("show-menu");
+    });
+  }
 
+  // --- Automated Menu Link Resolution Mechanics ---
+  const activeNavigationLinks = document.querySelectorAll(".nav__link");
 
-/*==================== CHANGE BACKGROUND HEADER ====================*/
-function scrollHeader(){
-    const header = document.getElementById('header')
-    // When the scroll is greater than 100 viewport height, add the scroll-header class to the header tag
-    if(this.scrollY >= 100) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
-}
-window.addEventListener('scroll', scrollHeader)
+  const executeMenuRetractionOnSelection = () => {
+    const contextualMenuNode = document.getElementById("nav-menu");
+    if (contextualMenuNode) {
+      contextualMenuNode.classList.remove("show-menu");
+    }
+  };
 
-/*==================== SWIPER DISCOVER ====================*/
-let swiper = new Swiper(".discover__container", {
+  activeNavigationLinks.forEach((linkNode) => {
+    linkNode.addEventListener("click", executeMenuRetractionOnSelection);
+  });
+
+  // --- Window Vertical Scroll Transformation Bindings ---
+  const evaluateHeaderDisplayState = () => {
+    const globalHeaderWrapper = document.getElementById("header");
+    if (globalHeaderWrapper) {
+      if (window.scrollY >= 100) {
+        globalHeaderWrapper.classList.add("scroll-header");
+      } else {
+        globalHeaderWrapper.classList.remove("scroll-header");
+      }
+    }
+  };
+
+  window.addEventListener("scroll", evaluateHeaderDisplayState);
+
+  // --- Swiper Discovery Integration Layout Configuration ---
+  new Swiper(".discover__container", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
@@ -47,128 +61,158 @@ let swiper = new Swiper(".discover__container", {
     loop: true,
     spaceBetween: 32,
     coverflowEffect: {
-        rotate: 0,
+      rotate: 0,
     },
-})
+  });
 
-/*==================== VIDEO ====================*/
-const videoFile = document.getElementById('video-file'),
-      videoButton = document.getElementById('video-button'),
-      videoIcon = document.getElementById('video-icon')
+  // --- Native Stream Video Playback Subsystem Engines ---
+  const assetVideoSource = document.getElementById("video-file");
+  const actionVideoTrigger = document.getElementById("video-button");
+  const stateVideoIcon = document.getElementById("video-icon");
 
-function playPause(){ 
-    if (videoFile.paused){
-        // Play video
-        videoFile.play()
-        // We change the icon
-        videoIcon.classList.add('ri-pause-line')
-        videoIcon.classList.remove('ri-play-line')
+  const synchronizeVideoPlaybackMechanics = () => {
+    if (!assetVideoSource || !stateVideoIcon) return;
+
+    if (assetVideoSource.paused) {
+      assetVideoSource.play();
+      stateVideoIcon.classList.add("ri-pause-line");
+      stateVideoIcon.classList.remove("ri-play-line");
+    } else {
+      assetVideoSource.pause();
+      stateVideoIcon.classList.remove("ri-pause-line");
+      stateVideoIcon.classList.add("ri-play-line");
     }
-    else {
-        // Pause video
-        videoFile.pause(); 
-        // We change the icon
-        videoIcon.classList.remove('ri-pause-line')
-        videoIcon.classList.add('ri-play-line')
+  };
 
+  if (actionVideoTrigger) {
+    actionVideoTrigger.addEventListener(
+      "click",
+      synchronizeVideoPlaybackMechanics
+    );
+  }
+
+  const cycleIconStateOnCompletion = () => {
+    if (stateVideoIcon) {
+      stateVideoIcon.classList.remove("ri-pause-line");
+      stateVideoIcon.classList.add("ri-play-line");
     }
-}
-videoButton.addEventListener('click', playPause)
+  };
 
-function finalVideo(){
-    // Video ends, icon change
-    videoIcon.classList.remove('ri-pause-line')
-    videoIcon.classList.add('ri-play-line')
-}
-// ended, when the video ends
-videoFile.addEventListener('ended', finalVideo)
+  if (assetVideoSource) {
+    assetVideoSource.addEventListener("ended", cycleIconStateOnCompletion);
+  }
 
+  // --- Elevation Up-Scroll Button Element Rendering ---
+  const parseAscentWidgetBehavior = () => {
+    const primaryElevationWidget = document.getElementById("scroll-up");
+    if (primaryElevationWidget) {
+      if (window.scrollY >= 200) {
+        primaryElevationWidget.classList.add("show-scroll");
+      } else {
+        primaryElevationWidget.classList.remove("show-scroll");
+      }
+    }
+  };
 
-/*==================== SHOW SCROLL UP ====================*/ 
-function scrollUp(){
-    const scrollUp = document.getElementById('scroll-up');
-    // When the scroll is higher than 200 viewport height, add the show-scroll class to the a tag with the scroll-top class
-    if(this.scrollY >= 200) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
-}
-window.addEventListener('scroll', scrollUp)
+  window.addEventListener("scroll", parseAscentWidgetBehavior);
 
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-const sections = document.querySelectorAll('section[id]')
+  // --- Viewport Node Observer & Section Highlight Synchronizer ---
+  const operationalDocumentSections = document.querySelectorAll("section[id]");
 
-function scrollActive(){
-    const scrollY = window.pageYOffset
+  const monitorActiveViewportCoordinates = () => {
+    const windowVerticalOffset = window.pageYOffset;
 
-    sections.forEach(current =>{
-        const sectionHeight = current.offsetHeight
-        const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
+    operationalDocumentSections.forEach((sectionNode) => {
+      const targetBlockHeight = sectionNode.offsetHeight;
+      const targetBlockTopBoundary = sectionNode.offsetTop - 50;
+      const targetBlockStringKey = sectionNode.getAttribute("id");
+      const interactiveTargetLink = document.querySelector(
+        `.nav__menu a[href*="${targetBlockStringKey}"]`
+      );
 
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
-        }else{
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
-        }
-    })
-}
-window.addEventListener('scroll', scrollActive)
+      if (!interactiveTargetLink) return;
 
-/*==================== SCROLL REVEAL ANIMATION ====================*/
-const sr = ScrollReveal({
-    distance: '60px',
+      if (
+        windowVerticalOffset > targetBlockTopBoundary &&
+        windowVerticalOffset <= targetBlockTopBoundary + targetBlockHeight
+      ) {
+        interactiveTargetLink.classList.add("active-link");
+      } else {
+        interactiveTargetLink.classList.remove("active-link");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", monitorActiveViewportCoordinates);
+
+  // --- ScrollReveal Dynamic Visualization Presets Engine ---
+  const engineRevealInitialization = ScrollReveal({
+    distance: "60px",
     duration: 2800,
-    // reset: true,
-})
+  });
 
+  engineRevealInitialization.reveal(
+    `.home__data, .home__social-link, .home__info,
+     .discover__container,
+     .experience__data, .experience__overlay,
+     .place__card,
+     .sponsor__content,
+     .footer__data, .footer__rights`,
+    {
+      origin: "top",
+      interval: 100,
+    }
+  );
 
-sr.reveal(`.home__data, .home__social-link, .home__info,
-           .discover__container,
-           .experience__data, .experience__overlay,
-           .place__card,
-           .sponsor__content,
-           .footer__data, .footer__rights`,{
-    origin: 'top',
-    interval: 100,
-})
+  engineRevealInitialization.reveal(
+    `.about__data, 
+     .video__description,
+     .subscribe__description`,
+    {
+      origin: "left",
+    }
+  );
 
-sr.reveal(`.about__data, 
-           .video__description,
-           .subscribe__description`,{
-    origin: 'left',
-})
+  engineRevealInitialization.reveal(
+    `.about__img-overlay, 
+     .video__content,
+     .subscribe__form`,
+    {
+      origin: "right",
+      interval: 100,
+    }
+  );
 
-sr.reveal(`.about__img-overlay, 
-           .video__content,
-           .subscribe__form`,{
-    origin: 'right',
-    interval: 100,
-})
+  // --- Interface Theme Registry Infrastructure ---
+  const themeControlSwitch = document.getElementById("theme-button");
+  const darkThemeClassName = "dark-theme";
+  const iconSunModeClassName = "ri-sun-line";
 
-/*==================== DARK LIGHT THEME ====================*/ 
-const themeButton = document.getElementById('theme-button')
-const darkTheme = 'dark-theme'
-const iconTheme = 'ri-sun-line'
+  const archivedThemeKeySelection = localStorage.getItem("selected-theme");
+  const archivedIconKeySelection = localStorage.getItem("selected-icon");
 
-// Previously selected topic (if user selected)
-const selectedTheme = localStorage.getItem('selected-theme')
-const selectedIcon = localStorage.getItem('selected-icon')
+  const retrieveTargetInterfaceTheme = () =>
+    document.body.classList.contains(darkThemeClassName) ? "dark" : "light";
+  const retrieveTargetInterfaceIcon = () =>
+    themeControlSwitch.classList.contains(iconSunModeClassName)
+      ? "ri-moon-line"
+      : "ri-sun-line";
 
-// We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line'
+  if (archivedThemeKeySelection && themeControlSwitch) {
+    document.body.classList[
+      archivedThemeKeySelection === "dark" ? "add" : "remove"
+    ](darkThemeClassName);
+    themeControlSwitch.classList[
+      archivedIconKeySelection === "ri-moon-line" ? "add" : "remove"
+    ](iconSunModeClassName);
+  }
 
-// We validate if the user previously chose a topic
-if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-  themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme)
-}
-
-// Activate / deactivate the theme manually with the button
-themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme', getCurrentTheme())
-    localStorage.setItem('selected-icon', getCurrentIcon())
-})
+  if (themeControlSwitch) {
+    themeControlSwitch.addEventListener("click", () => {
+      document.body.classList.toggle(darkThemeClassName);
+      themeControlSwitch.classList.toggle(iconSunModeClassName);
+      localStorage.setItem("selected-theme", retrieveTargetInterfaceTheme());
+      localStorage.setItem("selected-icon", retrieveTargetInterfaceIcon());
+    });
+  }
+})();
